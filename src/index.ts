@@ -1,26 +1,26 @@
-import { createFilter } from '@rollup/pluginutils';
-import { createUnplugin } from 'unplugin';
+import type { Plugin } from 'vite';
 
-import { resolveOption } from './core/options';
-import type { Options } from './core/options';
+import type { InfoItem } from './utils';
+import { getInfoItem } from './utils';
 
-export default createUnplugin<Options | undefined>((rawOptions = {}) => {
-    const options = resolveOption(rawOptions);
-    const filter = createFilter(options.include, options.exclude);
+interface Options {
+    infoList: InfoItem[];
+}
 
-    const name = 'unplugin-starter';
+export default function vitePluginPrintInfo(options: Options): Plugin {
     return {
-        name,
-        enforce: undefined,
+        name: 'vite-plugin-print-info',
+        enforce: 'pre',
+        configureServer(server) {
+            const _printUrls = server.printUrls;
 
-        transformInclude(id) {
-            return filter(id);
-        },
+            server.printUrls = () => {
+                _printUrls();
 
-        transform(code, id) {
-            console.log(code, id);
-            // eslint-disable-next-line unicorn/no-useless-undefined
-            return undefined;
+                for (const infoItem of options.infoList) {
+                    console.info(getInfoItem(infoItem));
+                }
+            };
         },
     };
-});
+}
