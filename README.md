@@ -1,83 +1,44 @@
-# unplugin-starter
+# vite-plugin-print-info
 
-[![npm](https://img.shields.io/npm/v/unplugin.svg)](https://npmjs.com/package/unplugin) [![downloads](https://img.shields.io/npm/dw/unplugin)](https://npmjs.com/package/unplugin) [![Unit Test](https://github.com/tjx666/unplugin-starter/actions/workflows/unit-test.yml/badge.svg)](https://github.com/tjx666/unplugin-starter/actions/workflows/unit-test.yml)
+[![npm](https://img.shields.io/npm/v/vite-plugin-print-info.svg)](https://npmjs.com/package/vite-plugin-print-info) [![downloads](https://img.shields.io/npm/dw/vite-plugin-print-info)](https://npmjs.com/package/vite-plugin-print-info) [![Unit Test](https://github.com/tjx666/vite-plugin-print-info/actions/workflows/unit-test.yml/badge.svg)](https://github.com/tjx666/vite-plugin-print-info/actions/workflows/unit-test.yml)
 
-Starter template for [unplugin](https://github.com/unjs/unplugin).
+Starter template for [vite-plugin-print-info](https://github.com/unjs/vite-plugin-print-info).
 
 ## Installation
 
 ```bash
-npm i -D unplugin-starter
+npm i -D vite-plugin-print-info
 ```
 
-<details>
-<summary>Vite</summary><br>
+## Usage
 
 ```ts
 // vite.config.ts
-import UnpluginStarter from 'unplugin-starter/vite';
+import vitePluginPrintInfo from 'vite-plugin-print-info';
 
 export default defineConfig({
-  plugins: [UnpluginStarter()],
+  plugins: [
+    vitePluginPrintInfo({
+      infoList: [
+        {
+          name: 'APP_ENV',
+          message: APP_ENV,
+          messageStyle: {
+            color: 'yellow',
+            bold: true,
+          },
+        },
+        {
+          name: 'Recommend',
+          message: 'https://abc.com/test-page?debug=1',
+          // manually disable url detect
+          // isUrlMessage: false
+        },
+      ],
+    }),
+  ],
 });
 ```
-
-<br></details>
-
-<details>
-<summary>Rollup</summary><br>
-
-```ts
-// rollup.config.js
-import UnpluginStarter from 'unplugin-starter/rollup';
-
-export default {
-  plugins: [UnpluginStarter()],
-};
-```
-
-<br></details>
-
-<details>
-<summary>esbuild</summary><br>
-
-```ts
-// esbuild.config.js
-import { build } from 'esbuild';
-
-build({
-  plugins: [require('unplugin-starter/esbuild')()],
-});
-```
-
-<br></details>
-
-<details>
-<summary>Webpack</summary><br>
-
-```ts
-// webpack.config.js
-module.exports = {
-  /* ... */
-  plugins: [require('unplugin-starter/webpack')()],
-};
-```
-
-<br></details>
-
-<details>
-<summary>Vue CLI</summary><br>
-
-```ts
-// vue.config.js
-module.exports = {
-  configureWebpack: {
-    plugins: [require('unplugin-starter/webpack')()],
-  },
-};
-```
-
-<br></details>
 
 ## License
 
