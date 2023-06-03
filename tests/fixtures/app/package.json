@@ -1,0 +1,10 @@
+{
+    "name": "app",
+    "type": "module",
+    "scripts": {
+        "dev": "vite"
+    },
+    "devDependencies": {
+        "vite-plugin-print-info": "workspace:*"
+    }
+}
