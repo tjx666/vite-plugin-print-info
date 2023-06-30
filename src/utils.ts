@@ -24,14 +24,17 @@ function colorize(str: string, style?: Partial<Style>) {
     return str;
 }
 
-export function getInfoItem(infoItem: InfoItem) {
+function isUrlStr(str: string) {
     // eslint-disable-next-line regexp/no-unused-capturing-group
     const urlRegexp = /^(https?:\/\/)?[\w-]+(\.[\w-]+)*(:\d+)?([/#?]\S*)?$/;
+    return urlRegexp.test(str) && !/^[\w-]+$/.test(str);
+}
 
+export function getInfoItem(infoItem: InfoItem) {
     let colorizedMessage = infoItem.message;
     if (
         infoItem.isUrlMessage === true ||
-        (infoItem.isUrlMessage === undefined && urlRegexp.test(infoItem.message))
+        (infoItem.isUrlMessage === undefined && isUrlStr(infoItem.message))
     ) {
         colorizedMessage = c.cyan(
             infoItem.message.replaceAll(/(\d+)/g, (_, port) => `${c.bold(port)}`),

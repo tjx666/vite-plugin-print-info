@@ -35,7 +35,7 @@ test('getInfoItem detect url', async () => {
         message: 'https://www.abc.com?debug=1',
     });
     const outputPath = resolve(__dirname, '3.txt');
-    // await fs.writeFile(outputPath, infoItem, 'utf8');
+    await fs.writeFile(outputPath, infoItem, 'utf8');
     expect(infoItem).toBe(await fs.readFile(outputPath, 'utf8'));
 });
 
