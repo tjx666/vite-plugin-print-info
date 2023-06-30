@@ -25,8 +25,8 @@ function colorize(str: string, style?: Partial<Style>) {
 }
 
 export function getInfoItem(infoItem: InfoItem) {
-    // eslint-disable-next-line regexp/no-unused-capturing-group, regexp/no-super-linear-backtracking, regexp/optimal-quantifier-concatenation
-    const urlRegexp = /^(https?:\/\/)?[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
+    // eslint-disable-next-line regexp/no-unused-capturing-group
+    const urlRegexp = /^(https?:\/\/)?[\w-]+(\.[\w-]+)*(:\d+)?([/#?]\S*)?$/;
 
     let colorizedMessage = infoItem.message;
     if (
