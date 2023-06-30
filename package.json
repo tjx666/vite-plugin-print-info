@@ -49,18 +49,18 @@
         "picocolors": "^1.0.0"
     },
     "devDependencies": {
-        "@types/node": "^18.16.16",
-        "@yutengjing/eslint-config-typescript": "^0.4.1",
+        "@types/node": "^20.3.2",
+        "@yutengjing/eslint-config-typescript": "^0.4.2",
         "@yutengjing/prettier-config": "^0.0.1",
-        "bumpp": "^9.1.0",
-        "eslint": "^8.41.0",
-        "eslint-define-config": "^1.20.0",
+        "bumpp": "^9.1.1",
+        "eslint": "^8.43.0",
+        "eslint-define-config": "^1.21.0",
         "fast-glob": "^3.2.12",
         "prettier": "^2.8.8",
-        "tsup": "^6.7.0",
+        "tsup": "^7.1.0",
         "tsx": "^3.12.7",
-        "typescript": "^5.0.4",
+        "typescript": "^5.1.6",
         "vite": "^4.3.9",
-        "vitest": "^0.31.4"
+        "vitest": "^0.32.2"
     }
 }
